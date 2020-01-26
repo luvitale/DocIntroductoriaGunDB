@@ -72,6 +72,71 @@
                     </ul>
                 </article>
             </section>
+            <section class="main-section" id="Installation">
+                <header><h1>Instalación</h1></header>
+                <article>
+                    <p>GUN se puede utilizar en diversos navegadores y servidores. Hicimos que sea fácil de instalar en muchos ambientes diferentes.</p>
+                    
+                    <h2 id="Browser">Browser</h2>
+                    <p>Hay un par de opciones:</p>
+                    
+                    <h3>Etiqueta script</h3>
+                    <p>Lo más fácil es simplemente agregar GUN en tu HTML:</p>
+                    <pre>
+&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    // tu código acá
+&lt;script&gt;</pre>
+                    
+                    <h3>Require</h3>
+                    <p>Suponiendo que estás usando algo como Webpack o Browserify, primero seguí el proceso de instalación con <a href="#Node">npm</a>, luego agregá esto al código del navegador:</p>
+                    <pre>var Gun = require('gun/gun');</pre>
+                    
+                    <h3>Import</h3>
+                    <p>Igual que con el <code>require</code>, pero utilizando la sintaxis ES6:</p>
+                    <pre>import Gun from 'gun/gun';</pre>
+                    <blockquote>
+                        <p>
+                            Nota: Por el momento, a pesar de que se importa, GUN todavía se define y utiliza como una variable global.
+                        </p>
+                    </blockquote>
+                    
+                    <h2 id="Node">Node</h2>
+                    <p>Primero necesitás instalar GUN with NPM o Yarn a través de la línea de comandos:</p>
+                    <p>$<code>npm install gun</code> o $<code>yarn add gun</code></p>
+                    <blockquote>
+                        <p>
+                            Nota: Si no tenés instalado <a href="http://nodejs.org/">node</a> o <a href="https://www.npmjs.com/">npm</a>, <a href="https://docs.npmjs.com/getting-started/installing-node">leé esto</a>.
+                        </p>
+                    </blockquote>
+                    <p>Después agregá esto al código del servidor:</p>
+                    <pre>var Gun = require('gun');</pre>
+                    <blockquote>
+                        <p>
+                            Nota: GUN viene con muchos adaptadores NodeJS por defecto para el almacenamiento y redes. Si no los querés, solamente usa <code>require('gun/gun')</code> en su lugar.
+                        </p>
+                    </blockquote>
+                    
+                    <h2>Server</h2>
+                    <p>Si querés instalar GUN en un servidor es necesario pasar una instancia de HTTP:</p>
+                    <pre>
+var server = require('http').createServer().listen(8080);
+var gun = Gun({web: server});</pre>
+                    <p>Te recomendamos que mirés el <a href="https://github.com/amark/gun/blob/master/examples/http.js">ejemplo de HTTP(S)</a> por defecto, o el de Express y Hapi que están en la misma carpeta.</p>
+                    
+                    <h2>¿Próximo paso?</h2>
+                    <ul>
+                        <li>Probar el <a href="#Hello_World">Hola Mundo</a>.</li>
+                        <li>Mirar el <a href="#Crash_Course">curso intensivo</a> de 2 minutos.</li>
+                        <li>Aprender las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>.</li>
+                    </ul>
+                    
+                    <h2>Nota de los módulos ECMA</h2>
+                    <p>
+                        En Node 12, if usas la bandera --experimental-modules, podés usar <code>Import Gun from './node_modules/gun/lib/server.js'</code> y ese es el truco para los que quieran usar módulos ESM.
+                    </p>
+                </article>
+            </section>
         </main>
     </body>
 </html>
