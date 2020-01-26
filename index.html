@@ -10,6 +10,68 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body class="gun">
-    
+        <main id="main-doc">
+            <section class="main-section" id="Introduction">
+                <header><h1>Introducción</h1></header>
+                <article>
+                    <blockquote>
+                        <p>
+                            <strong>¡Aprendé las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a></strong>! O leé desde el comienzo:
+                        </p>
+                    </blockquote>
+                    <p>
+                        GUN es un sistema de sincronización y almacenamiento de datos pequeño, fácil y rápido que se ejecuta en cualquier lugar con Javascript. El objetivo de GUN es que te centrés en los datos que necesitás almacenar, cargar y compartir en tu aplicación sin preocuparte con respecto a los servidores, las llamadas de red, bases de datos o en el seguimiento de los cambios fuera de línea o conflictos de concurrencia. Esto te permite crear aplicaciones interesantes rápidamente, como:
+                    </p>
+                    <div>
+                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1ASrmQ-CwX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p>
+                        <img src="https://gun.eco/see/3dvr.gif" alt="" title="Juegos 3D multijugador en RV">
+                        <a href="https://github.com/cstefanache/cstefanache.github.io/blob/master/_posts/2016-08-02-gun-db-artificial-knowledge-sharing#gundb"><img src="https://gun.eco/see/aiml.gif" alt="" title="IA distribuida"></a>
+                        <a href="http://gps.gundb.io/"><img src="https://gun.eco/see/gps.gif" alt="" title="Seguimiento GPS en tiempo real"></a>
+                        <a href="https://github.com/lmangani/gun-scape#gun-scape" title="Visualización de datos"><img src="https://gun.eco/see/dataviz.gif" alt=""></a>
+                        <a href="https://github.com/amark/gun/wiki/Auth"><img src="https://gun.eco/see/p2p.gif" alt="" title="dApps P2P"></a>
+                        <a href="https://github.com/Stefdv/gun-ui-lcd#okay-what-about-gundb-"><img src="https://gun.eco/see/iot.gif" alt="" title="Sincronización de IoT"></a>
+                    </p>
+                    
+                    <h2 id="Offline_First">Offline-First</h2>
+                    <p>
+                        Cuando un navegador nodo solicita datos, fusionará la respuesta con sus propios datos utilizando una CRDT y luego almacenará en caché el resultado. Esto significa que:
+                    </p>
+                    <ul>
+                        <li>La próxima vez que el navegador solicite los datos, la respuesta es instantánea, incluso sin conexión.</li>
+                        <li>Los datos se replican en cada navegador.</li>
+                        <li>Si el servidor falla, se pueden recuperar los datos desde los navegadores.</li>
+                    </ul>
+                    <p>
+                        Esto hace que la pérdida de información importante sea casi imposible, ya que tendrían que ser destruidas todas las copias de los datos antes.
+                    </p>
+                    
+                    <h2 id="Distributed">Distribuido</h2>
+                    <p>
+                        GUN es completamente descentralizado (nodo a nodo, de pares, peer-to-peer o multi-maestro), lo que significa que los cambios no son controlados por un servidor centralizado. Un servidor puede ser simplemente otro nodo en la red, que puede tener recursos más fiables que un navegador. Guardá los datos en una máquina y se sincronizará con otros nodos sin necesidad de un protocolo de consenso complejo. Simplemente funciona.
+                    </p>
+                    
+                    <hr>
+                    
+                    <h2>Pero, ¿cómo funciona?</h2>
+                    <em>Si te sentís perdido en palabras de moda, la siguiente descripción podría darte una idea general acerca de lo que está pasando.</em>
+                    <p>
+                        La base de datos orientada a grafos (BDOG) GUN se almacena en todos los nodos que participan en la red. La mayoría de escenarios de distribución de datos que son posiles que ocurran: cada nod podría poseer el grafo completo o solamente un subconjunto y podría poseer datos que no existen en cualquier otro nodo (todavía). Se considera que toda la base de datos es la unión de los grafos de cada uno de los nodos.
+                    </p>
+                    <p>
+                        No hay límite teórico para el tamaño total de un grafo de GUN. La cantidad de datos que un nodo tiene disponible localmente está limitada por las restricciones de memoria del entorno anfitrión, como el sistema operativo, el navegador, etc. La cantidad de datos que pueden persistir más del proceso que se ejecuta depende del motor de almacenamiento. En un navegador web por lo general será de 5 MB de almacenamiento local. Un supernodo con el almacenamiento de archivos Radix puede persistir cantidades de datos mucho más grandes.
+                    </p>
+                    <p>
+                    Los supernodos son nodos de GUN dedicados ejecutándose en NodeJS. Ellos recibirán todos los datos que se transmiten a la red y son capaces de servir a quien lo solicite. Los nodos normales que se ejecutan en un navegador web no empezarán a descargar toda la base de datos sino solamente las partes que requieran. Una aplicación GUN bien diseñada solamente descargará los datos relevantes, en lugar de consumir el ancho de banda y la RAM de los usuarios. Esto y la falta de fiabilidad general de los navegadores nodo hacen que sea esencial tener uno o más supernodos ejecutándose 24/7 para las operaciones de la mayoría de los casos de uso del mundo real.
+                    </p>
+                    
+                    <h2>¿Siguiente paso?</h2>
+                    <ul>
+                        <li>Seguí el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a></li>
+                    </ul>
+                </article>
+            </section>
+        </main>
     </body>
 </html>

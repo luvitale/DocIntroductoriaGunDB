@@ -1,44 +1,41 @@
 body.gun {
     animation-name: rainbow;
-    animation-duration: 30s;
+    animation-duration: 60s;
     animation-iteration-count: infinite;
     background-color: darkred;
+    color: white;
 }
 
 @keyframes rainbow {
-    10% {
-        background-color: red;
+    12.5% {
+        background-color: darkorange;
     }
     
-    20% {
-        background-color: orange;
+    25% {
+        background-color: darkgoldenrod;
     }
     
-    30% {
-        background-color: gold;
-    }
-    
-    40% {
-        background-color: yellow;
+    37.5% {
+        background-color: darkgreen;
     }
     
     50% {
-        background-color: green;
+        background-color: darkcyan;
     }
     
-    60% {
-        background-color: cyan;
+    62.5% {
+        background-color: darkblue;
     }
     
-    70% {
-        background-color: blue;
+    75% {
+        background-color: darkmagenta;
     }
     
-    80% {
-        background-color: magenta;
-    }
-    
-    90% {
+    87.5% {
         background-color: darkviolet;
     }
+}
+
+a {
+    color: lightskyblue;
 }
