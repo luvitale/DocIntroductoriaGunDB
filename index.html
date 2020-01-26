@@ -72,6 +72,7 @@
                     </ul>
                 </article>
             </section>
+            
             <section class="main-section" id="Installation">
                 <header><h1>Instalación</h1></header>
                 <article>
@@ -135,6 +136,54 @@ var gun = Gun({web: server});</pre>
                     <p>
                         En Node 12, if usas la bandera --experimental-modules, podés usar <code>Import Gun from './node_modules/gun/lib/server.js'</code> y ese es el truco para los que quieran usar módulos ESM.
                     </p>
+                </article>
+            </section>
+            
+            <section class="main-section" id="Hello_World">
+                <header><h1>Hola Mundo</h1></header>
+                <article>
+                    <p>Creemos una sencilla aplicación Hola Mundo en un pequeño archivo que contendrá tanto el código HTML y JS:</p>
+                    <pre>
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hola&lt;/h1&gt;
+    &lt;p&gt;¿Cómo te llamás?&lt;/p&gt;
+    &lt;form&gt;&lt;input&gt;&lt;button&gt;Enviar&lt;/button&gt;&lt;/form&gt;
+
+    &lt;script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+      var gun = Gun()
+
+      $('form').on('submit', function (event) {
+        event.preventDefault()
+        var input = $('form').find('input')
+        gun.get('hola').put({ nombre: input.val() });
+        input.val('')
+      })
+
+      gun.get('hola').on(function(data, key) {
+        var h1 = $('h1')
+        h1.text('Hola ' + data.nombre)
+      })
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+                    <p>Probalo, pero introduciendo tu nombre. El mensaje de saludo lo mostrará.</p>
+                    <p>Ahora refrescá la página entera. Tu nombre todavía estará allí gracias a GUN.</p>
+                    
+                    <h2>¿Qué está pasando?</h2>
+                    <p>Primero cargamos GUN con <code>&lt;script src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;</code> y lo inicializamos con <code>var gun = Gun();</code></p>
+                    <p>Luego, cada vez que el usuario envía un nuevo nombre <code>$('form').on</code> actualizaremos el nodo GUN con un objeto <code>{ nombre: input.val() }</code> hacemos <code>put</code> en la clave <code>'hola'</code> con <code>gun.get('hola').put(...)</code>.</p>
+                    Finalmente, usando <code>gun.get('hola').on(...)</code> obtenemos actualizaciones en tiempo real de cada vez que el nodo <code>'hola'</code> cambia, entonces podemos mostralo en el <code>h1</code>.
+                    <p>Tené en cuenta que cuando se actualice la página, se llamará automáticamente a <code>gun.get('hola').on(...)</code>, porque GUN sabe que ya existen datos en el nodo <code>'hola'</code></p>
+                    
+                    <h2>¿Siguiente paso?</h2>
+                    <ul>
+                        <li>Encontrar la mejor manera de usar este sistema de documentación en el <a href="Next_Steps">siguiente paso</a>.</li>
+                        <li>¿Ver el <a href="#Crash_Course">curso intensivo</a> de 2 minutos?</li>
+                        <li>¡Aprender las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>!</li>
+                    </ul>
                 </article>
             </section>
         </main>
