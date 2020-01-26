@@ -8,154 +8,154 @@
         <title> Documentación introductoria de GunDB </title>
         
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css">
     </head>
     <body class="gun">
-        <nav id="navbar">
-            <header><h1>GunDB</h1></header>
-            <ul>
-                <li><a class="nav-link" href="#Introduction">Introducción</a></li>
-                <li><a class="nav-link" href="#Installation">Instalación</a></li>
-                <li><a class="nav-link" href="#Hello_World">Hola Mundo</a></li>
-                <li><a class="nav-link" href="#Next_Steps">Próximos pasos</a></li>
-                <li><a class="nav-link" href="#Crash_Course">Curso intensivo</a></li>
-            </ul>
-        </nav>
-        
-        <main id="main-doc">
-            <section class="main-section" id="Introduction">
-                <header><h1>Introducción</h1></header>
-                <article>
-                    <blockquote>
+        <div class="full-container">
+            <nav id="navbar">
+                <header><h1>GunDB</h1></header>
+                <ul>
+                    <li><a class="nav-link" href="#Introduction">Introducción</a></li>
+                    <li><a class="nav-link" href="#Installation">Instalación</a></li>
+                    <li><a class="nav-link" href="#Hello_World">Hola Mundo</a></li>
+                    <li><a class="nav-link" href="#Next_Steps">Próximos pasos</a></li>
+                    <li><a class="nav-link" href="#Crash_Course">Curso intensivo</a></li>
+                </ul>
+            </nav>
+
+            <main id="main-doc">
+                <section class="main-section" id="Introduction">
+                    <header><h1>Introducción</h1></header>
+                    <article>
+                        <blockquote>
+                            <p>
+                                <strong>¡Aprendé las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a></strong>! O leé desde el comienzo:
+                            </p>
+                        </blockquote>
                         <p>
-                            <strong>¡Aprendé las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a></strong>! O leé desde el comienzo:
+                            GUN es un sistema de sincronización y almacenamiento de datos pequeño, fácil y rápido que se ejecuta en cualquier lugar con Javascript. El objetivo de GUN es que te centrés en los datos que necesitás almacenar, cargar y compartir en tu aplicación sin preocuparte con respecto a los servidores, las llamadas de red, bases de datos o en el seguimiento de los cambios fuera de línea o conflictos de concurrencia. Esto te permite crear aplicaciones interesantes rápidamente, como:
                         </p>
-                    </blockquote>
-                    <p>
-                        GUN es un sistema de sincronización y almacenamiento de datos pequeño, fácil y rápido que se ejecuta en cualquier lugar con Javascript. El objetivo de GUN es que te centrés en los datos que necesitás almacenar, cargar y compartir en tu aplicación sin preocuparte con respecto a los servidores, las llamadas de red, bases de datos o en el seguimiento de los cambios fuera de línea o conflictos de concurrencia. Esto te permite crear aplicaciones interesantes rápidamente, como:
-                    </p>
-                    <div>
-                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/1ASrmQ-CwX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <p>
-                        <img src="https://gun.eco/see/3dvr.gif" alt="" title="Juegos 3D multijugador en RV">
-                        <a href="https://github.com/cstefanache/cstefanache.github.io/blob/master/_posts/2016-08-02-gun-db-artificial-knowledge-sharing#gundb"><img src="https://gun.eco/see/aiml.gif" alt="" title="IA distribuida"></a>
-                        <a href="http://gps.gundb.io/"><img src="https://gun.eco/see/gps.gif" alt="" title="Seguimiento GPS en tiempo real"></a>
-                        <a href="https://github.com/lmangani/gun-scape#gun-scape" title="Visualización de datos"><img src="https://gun.eco/see/dataviz.gif" alt=""></a>
-                        <a href="https://github.com/amark/gun/wiki/Auth"><img src="https://gun.eco/see/p2p.gif" alt="" title="dApps P2P"></a>
-                        <a href="https://github.com/Stefdv/gun-ui-lcd#okay-what-about-gundb-"><img src="https://gun.eco/see/iot.gif" alt="" title="Sincronización de IoT"></a>
-                    </p>
-                    
-                    <h2 id="Offline_First">Offline-First</h2>
-                    <p>
-                        Cuando un navegador nodo solicita datos, fusionará la respuesta con sus propios datos utilizando una CRDT y luego almacenará en caché el resultado. Esto significa que:
-                    </p>
-                    <ul>
-                        <li>La próxima vez que el navegador solicite los datos, la respuesta es instantánea, incluso sin conexión.</li>
-                        <li>Los datos se replican en cada navegador.</li>
-                        <li>Si el servidor falla, se pueden recuperar los datos desde los navegadores.</li>
-                    </ul>
-                    <p>
-                        Esto hace que la pérdida de información importante sea casi imposible, ya que tendrían que ser destruidas todas las copias de los datos antes.
-                    </p>
-                    
-                    <h2 id="Distributed">Distribuido</h2>
-                    <p>
-                        GUN es completamente descentralizado (nodo a nodo, de pares, peer-to-peer o multi-maestro), lo que significa que los cambios no son controlados por un servidor centralizado. Un servidor puede ser simplemente otro nodo en la red, que puede tener recursos más fiables que un navegador. Guardá los datos en una máquina y se sincronizará con otros nodos sin necesidad de un protocolo de consenso complejo. Simplemente funciona.
-                    </p>
-                    
-                    <hr>
-                    
-                    <h2>Pero, ¿cómo funciona?</h2>
-                    <em>Si te sentís perdido en palabras de moda, la siguiente descripción podría darte una idea general acerca de lo que está pasando.</em>
-                    <p>
-                        La base de datos orientada a grafos (BDOG) GUN se almacena en todos los nodos que participan en la red. La mayoría de escenarios de distribución de datos que son posiles que ocurran: cada nod podría poseer el grafo completo o solamente un subconjunto y podría poseer datos que no existen en cualquier otro nodo (todavía). Se considera que toda la base de datos es la unión de los grafos de cada uno de los nodos.
-                    </p>
-                    <p>
-                        No hay límite teórico para el tamaño total de un grafo de GUN. La cantidad de datos que un nodo tiene disponible localmente está limitada por las restricciones de memoria del entorno anfitrión, como el sistema operativo, el navegador, etc. La cantidad de datos que pueden persistir más del proceso que se ejecuta depende del motor de almacenamiento. En un navegador web por lo general será de 5 MB de almacenamiento local. Un supernodo con el almacenamiento de archivos Radix puede persistir cantidades de datos mucho más grandes.
-                    </p>
-                    <p>
-                    Los supernodos son nodos de GUN dedicados ejecutándose en NodeJS. Ellos recibirán todos los datos que se transmiten a la red y son capaces de servir a quien lo solicite. Los nodos normales que se ejecutan en un navegador web no empezarán a descargar toda la base de datos sino solamente las partes que requieran. Una aplicación GUN bien diseñada solamente descargará los datos relevantes, en lugar de consumir el ancho de banda y la RAM de los usuarios. Esto y la falta de fiabilidad general de los navegadores nodo hacen que sea esencial tener uno o más supernodos ejecutándose 24/7 para las operaciones de la mayoría de los casos de uso del mundo real.
-                    </p>
-                    
-                    <h2>¿Siguiente paso?</h2>
-                    <ul>
-                        <li>Seguí el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a></li>
-                    </ul>
-                </article>
-            </section>
-            
-            <section class="main-section" id="Installation">
-                <header><h1>Instalación</h1></header>
-                <article>
-                    <p>GUN se puede utilizar en diversos navegadores y servidores. Hicimos que sea fácil de instalar en muchos ambientes diferentes.</p>
-                    
-                    <h2 id="Browser">Browser</h2>
-                    <p>Hay un par de opciones:</p>
-                    
-                    <h3>Etiqueta script</h3>
-                    <p>Lo más fácil es simplemente agregar GUN en tu HTML:</p>
-                    <pre>
-&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;
+                        <div>
+                            <iframe height="315" src="https://www.youtube-nocookie.com/embed/1ASrmQ-CwX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p id="p-img">
+                            <img src="https://gun.eco/see/3dvr.gif" alt="" title="Juegos 3D multijugador en RV">
+                            <a href="https://github.com/cstefanache/cstefanache.github.io/blob/master/_posts/2016-08-02-gun-db-artificial-knowledge-sharing#gundb"><img src="https://gun.eco/see/aiml.gif" alt="" title="IA distribuida"></a>
+                            <a href="http://gps.gundb.io/"><img src="https://gun.eco/see/gps.gif" alt="" title="Seguimiento GPS en tiempo real"></a>
+                            <a href="https://github.com/lmangani/gun-scape#gun-scape" title="Visualización de datos"><img src="https://gun.eco/see/dataviz.gif" alt=""></a>
+                            <a href="https://github.com/amark/gun/wiki/Auth"><img src="https://gun.eco/see/p2p.gif" alt="" title="dApps P2P"></a>
+                            <a href="https://github.com/Stefdv/gun-ui-lcd#okay-what-about-gundb-"><img src="https://gun.eco/see/iot.gif" alt="" title="Sincronización de IoT"></a>
+                        </p>
+
+                        <h2 id="Offline_First">Offline-First</h2>
+                        <p>
+                            Cuando un navegador nodo solicita datos, fusionará la respuesta con sus propios datos utilizando una CRDT y luego almacenará en caché el resultado. Esto significa que:
+                        </p>
+                        <ul>
+                            <li>La próxima vez que el navegador solicite los datos, la respuesta es instantánea, incluso sin conexión.</li>
+                            <li>Los datos se replican en cada navegador.</li>
+                            <li>Si el servidor falla, se pueden recuperar los datos desde los navegadores.</li>
+                        </ul>
+                        <p>
+                            Esto hace que la pérdida de información importante sea casi imposible, ya que tendrían que ser destruidas todas las copias de los datos antes.
+                        </p>
+
+                        <h2 id="Distributed">Distribuido</h2>
+                        <p>
+                            GUN es completamente descentralizado (nodo a nodo, de pares, peer-to-peer o multi-maestro), lo que significa que los cambios no son controlados por un servidor centralizado. Un servidor puede ser simplemente otro nodo en la red, que puede tener recursos más fiables que un navegador. Guardá los datos en una máquina y se sincronizará con otros nodos sin necesidad de un protocolo de consenso complejo. Simplemente funciona.
+                        </p>
+
+                        <hr>
+
+                        <h2>Pero, ¿cómo funciona?</h2>
+                        <em>Si te sentís perdido en palabras de moda, la siguiente descripción podría darte una idea general acerca de lo que está pasando.</em>
+                        <p>
+                            La base de datos orientada a grafos (BDOG) GUN se almacena en todos los nodos que participan en la red. La mayoría de escenarios de distribución de datos que son posiles que ocurran: cada nod podría poseer el grafo completo o solamente un subconjunto y podría poseer datos que no existen en cualquier otro nodo (todavía). Se considera que toda la base de datos es la unión de los grafos de cada uno de los nodos.
+                        </p>
+                        <p>
+                            No hay límite teórico para el tamaño total de un grafo de GUN. La cantidad de datos que un nodo tiene disponible localmente está limitada por las restricciones de memoria del entorno anfitrión, como el sistema operativo, el navegador, etc. La cantidad de datos que pueden persistir más del proceso que se ejecuta depende del motor de almacenamiento. En un navegador web por lo general será de 5 MB de almacenamiento local. Un supernodo con el almacenamiento de archivos Radix puede persistir cantidades de datos mucho más grandes.
+                        </p>
+                        <p>
+                        Los supernodos son nodos de GUN dedicados ejecutándose en NodeJS. Ellos recibirán todos los datos que se transmiten a la red y son capaces de servir a quien lo solicite. Los nodos normales que se ejecutan en un navegador web no empezarán a descargar toda la base de datos sino solamente las partes que requieran. Una aplicación GUN bien diseñada solamente descargará los datos relevantes, en lugar de consumir el ancho de banda y la RAM de los usuarios. Esto y la falta de fiabilidad general de los navegadores nodo hacen que sea esencial tener uno o más supernodos ejecutándose 24/7 para las operaciones de la mayoría de los casos de uso del mundo real.
+                        </p>
+
+                        <h2>¿Siguiente paso?</h2>
+                        <ul>
+                            <li>Seguí el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a></li>
+                        </ul>
+                    </article>
+                </section>
+
+                <section class="main-section" id="Installation">
+                    <header><h1>Instalación</h1></header>
+                    <article>
+                        <p>GUN se puede utilizar en diversos navegadores y servidores. Hicimos que sea fácil de instalar en muchos ambientes diferentes.</p>
+
+                        <h2 id="Browser">Browser</h2>
+                        <p>Hay un par de opciones:</p>
+
+                        <h3>Etiqueta script</h3>
+                        <p>Lo más fácil es simplemente agregar GUN en tu HTML:</p>
+                        <pre>
+<code class="lang-js">&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;
 &lt;script&gt;
     // tu código acá
-&lt;script&gt;</pre>
-                    
-                    <h3>Require</h3>
-                    <p>Suponiendo que estás usando algo como Webpack o Browserify, primero seguí el proceso de instalación con <a href="#Node">npm</a>, luego agregá esto al código del navegador:</p>
-                    <pre>var Gun = require('gun/gun');</pre>
-                    
-                    <h3>Import</h3>
-                    <p>Igual que con el <code>require</code>, pero utilizando la sintaxis ES6:</p>
-                    <pre>import Gun from 'gun/gun';</pre>
-                    <blockquote>
+&lt;/script&gt;</code></pre>
+
+                        <h3>Require</h3>
+                        <p>Suponiendo que estás usando algo como Webpack o Browserify, primero seguí el proceso de instalación con <a href="#Node">npm</a>, luego agregá esto al código del navegador:</p>
+                        <pre><code class="lang-js">var Gun = require('gun/gun');</code></pre>
+
+                        <h3>Import</h3>
+                        <p>Igual que con el <code class="lang-js">require</code>, pero utilizando la sintaxis ES6:</p>
+                        <pre><code class="lang-js">import Gun from 'gun/gun';</code></pre>
+                        <blockquote>
+                            <p>
+                                Nota: Por el momento, a pesar de que se importa, GUN todavía se define y utiliza como una variable global.
+                            </p>
+                        </blockquote>
+
+                        <h2 id="Node">Node</h2>
+                        <p>Primero necesitás instalar GUN with NPM o Yarn a través de la línea de comandos:</p>
+                        <p>$<code class="lang-js">npm install gun</code> o $<code class="lang-js">yarn add gun</code></p>
+                        <blockquote>
+                            <p>
+                                Nota: Si no tenés instalado <a href="http://nodejs.org/">node</a> o <a href="https://www.npmjs.com/">npm</a>, <a href="https://docs.npmjs.com/getting-started/installing-node">leé esto</a>.
+                            </p>
+                        </blockquote>
+                        <p>Después agregá esto al código del servidor:</p>
+                        <pre><code class="lang-js">var Gun = require('gun');</code></pre>
+                        <blockquote>
+                            <p>
+                                Nota: GUN viene con muchos adaptadores NodeJS por defecto para el almacenamiento y redes. Si no los querés, solamente usa <code class="lang-js">require('gun/gun')</code> en su lugar.
+                            </p>
+                        </blockquote>
+
+                        <h2>Server</h2>
+                        <p>Si querés instalar GUN en un servidor es necesario pasar una instancia de HTTP:</p>
+                        <pre><code class="lang-js">var server = require('http').createServer().listen(8080);
+var gun = Gun({web: server});</code></pre>
+                        <p>Te recomendamos que mirés el <a href="https://github.com/amark/gun/blob/master/examples/http.js">ejemplo de HTTP(S)</a> por defecto, o el de Express y Hapi que están en la misma carpeta.</p>
+
+                        <h2>¿Próximo paso?</h2>
+                        <ul>
+                            <li>Probar el <a href="#Hello_World">Hola Mundo</a>.</li>
+                            <li>Mirar el <a href="#Crash_Course">curso intensivo</a> de 2 minutos.</li>
+                            <li>Aprender las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>.</li>
+                        </ul>
+
+                        <h2>Nota de los módulos ECMA</h2>
                         <p>
-                            Nota: Por el momento, a pesar de que se importa, GUN todavía se define y utiliza como una variable global.
+                            En Node 12, if usas la bandera --experimental-modules, podés usar <code class="lang-js">Import Gun from './node_modules/gun/lib/server.js'</code> y ese es el truco para los que quieran usar módulos ESM.
                         </p>
-                    </blockquote>
-                    
-                    <h2 id="Node">Node</h2>
-                    <p>Primero necesitás instalar GUN with NPM o Yarn a través de la línea de comandos:</p>
-                    <p>$<code>npm install gun</code> o $<code>yarn add gun</code></p>
-                    <blockquote>
-                        <p>
-                            Nota: Si no tenés instalado <a href="http://nodejs.org/">node</a> o <a href="https://www.npmjs.com/">npm</a>, <a href="https://docs.npmjs.com/getting-started/installing-node">leé esto</a>.
-                        </p>
-                    </blockquote>
-                    <p>Después agregá esto al código del servidor:</p>
-                    <pre>var Gun = require('gun');</pre>
-                    <blockquote>
-                        <p>
-                            Nota: GUN viene con muchos adaptadores NodeJS por defecto para el almacenamiento y redes. Si no los querés, solamente usa <code>require('gun/gun')</code> en su lugar.
-                        </p>
-                    </blockquote>
-                    
-                    <h2>Server</h2>
-                    <p>Si querés instalar GUN en un servidor es necesario pasar una instancia de HTTP:</p>
-                    <pre>
-var server = require('http').createServer().listen(8080);
-var gun = Gun({web: server});</pre>
-                    <p>Te recomendamos que mirés el <a href="https://github.com/amark/gun/blob/master/examples/http.js">ejemplo de HTTP(S)</a> por defecto, o el de Express y Hapi que están en la misma carpeta.</p>
-                    
-                    <h2>¿Próximo paso?</h2>
-                    <ul>
-                        <li>Probar el <a href="#Hello_World">Hola Mundo</a>.</li>
-                        <li>Mirar el <a href="#Crash_Course">curso intensivo</a> de 2 minutos.</li>
-                        <li>Aprender las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>.</li>
-                    </ul>
-                    
-                    <h2>Nota de los módulos ECMA</h2>
-                    <p>
-                        En Node 12, if usas la bandera --experimental-modules, podés usar <code>Import Gun from './node_modules/gun/lib/server.js'</code> y ese es el truco para los que quieran usar módulos ESM.
-                    </p>
-                </article>
-            </section>
-            
-            <section class="main-section" id="Hello_World">
-                <header><h1>Hola Mundo</h1></header>
-                <article>
-                    <p>Creemos una sencilla aplicación Hola Mundo en un pequeño archivo que contendrá tanto el código HTML y JS:</p>
-                    <pre>
-&lt;html&gt;
+                    </article>
+                </section>
+
+                <section class="main-section" id="Hello_World">
+                    <header><h1>Hola Mundo</h1></header>
+                    <article>
+                        <p>Creemos una sencilla aplicación Hola Mundo en un pequeño archivo que contendrá tanto el código HTML y JS:</p>
+                        <pre><code class="lang-html">&lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;Hola&lt;/h1&gt;
     &lt;p&gt;¿Cómo te llamás?&lt;/p&gt;
@@ -163,8 +163,8 @@ var gun = Gun({web: server});</pre>
 
     &lt;script src="https://cdn.jsdelivr.net/npm/gun/examples/jquery.js"&gt;&lt;/script&gt;
     &lt;script src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;
-    &lt;script&gt;
-      var gun = Gun()
+    &lt;script&gt;</code>
+      <code class="lang-js">var gun = Gun()
 
       $('form').on('submit', function (event) {
         event.preventDefault()
@@ -176,69 +176,73 @@ var gun = Gun({web: server});</pre>
       gun.get('hola').on(function(data, key) {
         var h1 = $('h1')
         h1.text('Hola ' + data.nombre)
-      })
-    &lt;/script&gt;
+      })</code>
+    <code class="lang-html">&lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;</pre>
-                    <p>Probalo, pero introduciendo tu nombre. El mensaje de saludo lo mostrará.</p>
-                    <p>Ahora refrescá la página entera. Tu nombre todavía estará allí gracias a GUN.</p>
-                    
-                    <h2>¿Qué está pasando?</h2>
-                    <p>Primero cargamos GUN con <code>&lt;script src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;</code> y lo inicializamos con <code>var gun = Gun();</code></p>
-                    <p>Luego, cada vez que el usuario envía un nuevo nombre <code>$('form').on</code> actualizaremos el nodo GUN con un objeto <code>{ nombre: input.val() }</code> hacemos <code>put</code> en la clave <code>'hola'</code> con <code>gun.get('hola').put(...)</code>.</p>
-                    Finalmente, usando <code>gun.get('hola').on(...)</code> obtenemos actualizaciones en tiempo real de cada vez que el nodo <code>'hola'</code> cambia, entonces podemos mostralo en el <code>h1</code>.
-                    <p>Tené en cuenta que cuando se actualice la página, se llamará automáticamente a <code>gun.get('hola').on(...)</code>, porque GUN sabe que ya existen datos en el nodo <code>'hola'</code></p>
-                    
-                    <h2>¿Siguiente paso?</h2>
-                    <ul>
-                        <li>Encontrar la mejor manera de usar este sistema de documentación en el <a href="Next_Steps">siguiente paso</a>.</li>
-                        <li>¿Ver el <a href="#Crash_Course">curso intensivo</a> de 2 minutos?</li>
-                        <li>¡Aprender las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>!</li>
-                    </ul>
-                </article>
-            </section>
-            
-            <section class="main-section" id="Next_Steps">
-                <header><h1>Próximos pasos</h1></header>
-                <article>
-                    <p>Dividimos la documentación en varias páginas en base a sus necesidades:</p>
-                    
-                    <h2 id="Application_Developers">Desarrolladores de aplicaciones</h2>
-                    <p>Para las personas que solamente quieren realizar tareas. Tendrán que empezar con esto:</p>
-                    <ul>
-                        <li>Mirar los 2 minutos del <a href="#Crash_Course">curso intensivo</a>.</li>
-                        <li>Experimentar los <a href="https://gun.eco/docs/Todo-Dapp">tutoriales interactivos</a>.</li>
-                        <li>Trabajar a tu manera con las <a href="https://gun.eco/docs/Graph-Guide">guías educativas</a>.</li>
-                        <li>Revisar en la <a href="https://gun.eco/docs/API">documentación de la API</a>.</li>
-                    </ul>
-                    
-                    <h2 id="Software_Architects">Arquitectos de software</h2>
-                    <p>Puede ser que quieras aprender sobre la ingeniería de GUN y decidir si es una buena opción para tu empresa. Te recomendamos:</p>
-                    <ul>
-                        <li>Tener una idea de nuestra <a href="https://gun.eco/docs/CAP-Theorem">concesiones del teorema PAC</a>.</li>
-                        <li>Revisar los <a href="https://gun.eco/docs/100000-ops-sec-in-IE6-on-2GB-Atom-CPU">parámetros de rendimiento</a>.</li>
-                        <li>Ver la <a href="https://gun.eco/docs/GUN%E2%80%99s-Data-Format-%28JSON%29">estructura de los grafos</a>.</li>
-                        <li>Entender cómo trabaja el <a href="https://gun.eco/docs/Conflict-Resolution-with-Guns">algoritmo de resolución de conflictos</a>.</li>
-                        <li>Recrear <a href="https://gun.eco/docs/Porting-GUN">GUN desde cero</a>.</li>
-                    </ul>
-                    
-                    <p>¡Esperamos que te sirva de ayuda!</p>
-                </article>
-            </section>
-            
-            <section class="main-section" id="Crash_Course">
-                <header><h1>Curso intensivo</h1></header>
-                <article>
-                    <p>Los 2 minutos de curso intensivo</p>
-                    <a href="https://scrimba.com/cast/cW2Vsa.embed">https://scrimba.com/cast/cW2Vsa.embed</a>
-                    
-                    <h2>¿Siguiente paso?</h2>
-                    <ul>
-                        <li>¡Aprendé las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>!</li>
-                        <li>Ponete al día sobre los modelos de datos con una <a href="https://gun.eco/docs/Graph-Guide">guía introductoria de grafos</a>.</li>
-                    </ul>
-                </article>                                
-            </section>
-        </main>
+&lt;/html&gt;</code></pre>
+                        <p>Probalo, pero introduciendo tu nombre. El mensaje de saludo lo mostrará.</p>
+                        <p>Ahora refrescá la página entera. Tu nombre todavía estará allí gracias a GUN.</p>
+
+                        <h2>¿Qué está pasando?</h2>
+                        <p>Primero cargamos GUN con <code class="lang-html">&lt;script src="https://cdn.jsdelivr.net/npm/gun/gun.js"&gt;&lt;/script&gt;</code> y lo inicializamos con <code class="lang-js">var gun = Gun();</code></p>
+                        <p>Luego, cada vez que el usuario envía un nuevo nombre <code class="lang-js">$('form').on</code> actualizaremos el nodo GUN con un objeto <code class="lang-js">{ nombre: input.val() }</code> hacemos <code class="lang-js">put</code> en la clave <code class="lang-js">'hola'</code> con <code class="lang-js">gun.get('hola').put(...)</code>.</p>
+                        Finalmente, usando <code class="lang-js">gun.get('hola').on(...)</code> obtenemos actualizaciones en tiempo real de cada vez que el nodo <code class="lang-js">'hola'</code> cambia, entonces podemos mostrarlo en el <code class="lang-html">h1</code>.
+                        <p>Tené en cuenta que cuando se actualice la página, se llamará automáticamente a <code class="lang-js">gun.get('hola').on(...)</code>, porque GUN sabe que ya existen datos en el nodo <code class="lang-js">'hola'</code></p>
+
+                        <h2>¿Siguiente paso?</h2>
+                        <ul>
+                            <li>Encontrar la mejor manera de usar este sistema de documentación en el <a href="Next_Steps">siguiente paso</a>.</li>
+                            <li>¿Ver el <a href="#Crash_Course">curso intensivo</a> de 2 minutos?</li>
+                            <li>¡Aprender las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>!</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <section class="main-section" id="Next_Steps">
+                    <header><h1>Próximos pasos</h1></header>
+                    <article>
+                        <p>Dividimos la documentación en varias páginas en base a sus necesidades:</p>
+
+                        <h2 id="Application_Developers">Desarrolladores de aplicaciones</h2>
+                        <p>Para las personas que solamente quieren realizar tareas. Tendrán que empezar con esto:</p>
+                        <ul>
+                            <li>Mirar los 2 minutos del <a href="#Crash_Course">curso intensivo</a>.</li>
+                            <li>Experimentar los <a href="https://gun.eco/docs/Todo-Dapp">tutoriales interactivos</a>.</li>
+                            <li>Trabajar a tu manera con las <a href="https://gun.eco/docs/Graph-Guide">guías educativas</a>.</li>
+                            <li>Revisar en la <a href="https://gun.eco/docs/API">documentación de la API</a>.</li>
+                        </ul>
+
+                        <h2 id="Software_Architects">Arquitectos de software</h2>
+                        <p>Puede ser que quieras aprender sobre la ingeniería de GUN y decidir si es una buena opción para tu empresa. Te recomendamos:</p>
+                        <ul>
+                            <li>Tener una idea de nuestra <a href="https://gun.eco/docs/CAP-Theorem">concesiones del teorema PAC</a>.</li>
+                            <li>Revisar los <a href="https://gun.eco/docs/100000-ops-sec-in-IE6-on-2GB-Atom-CPU">parámetros de rendimiento</a>.</li>
+                            <li>Ver la <a href="https://gun.eco/docs/GUN%E2%80%99s-Data-Format-%28JSON%29">estructura de los grafos</a>.</li>
+                            <li>Entender cómo trabaja el <a href="https://gun.eco/docs/Conflict-Resolution-with-Guns">algoritmo de resolución de conflictos</a>.</li>
+                            <li>Recrear <a href="https://gun.eco/docs/Porting-GUN">GUN desde cero</a>.</li>
+                        </ul>
+
+                        <p>¡Esperamos que te sirva de ayuda!</p>
+                    </article>
+                </section>
+
+                <section class="main-section" id="Crash_Course">
+                    <header><h1>Curso intensivo</h1></header>
+                    <article>
+                        <p>Los 2 minutos de curso intensivo</p>
+                        <a href="https://scrimba.com/cast/cW2Vsa.embed">https://scrimba.com/cast/cW2Vsa.embed</a>
+
+                        <h2>¿Siguiente paso?</h2>
+                        <ul>
+                            <li>¡Aprendé las respuestas a todas tus preguntas en el <a href="https://gun.eco/docs/Todo-Dapp">tutorial interactivo</a>!</li>
+                            <li>Ponete al día sobre los modelos de datos con una <a href="https://gun.eco/docs/Graph-Guide">guía introductoria de grafos</a>.</li>
+                        </ul>
+                    </article>                                
+                </section>
+            </main>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
     </body>
 </html>

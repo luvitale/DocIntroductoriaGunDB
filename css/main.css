@@ -39,3 +39,86 @@ body.gun {
 a {
     color: lightskyblue;
 }
+
+#navbar {
+    position: fixed;
+    left: 20px;
+    max-height: 280px;
+    text-align: center;
+}
+
+header {
+    margin: 16px;
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: thin;
+}
+
+#main-doc {
+    position: absolute;
+    margin-left: 256px;
+    padding: 16px;
+    margin-bottom: 32px;
+}
+
+#main-doc header {
+    text-align: left;
+    margin: 0;
+}
+
+#navbar ul {
+    height: 100%;
+    padding: 0;
+}
+
+#navbar li {
+    color: white;
+    border-top: 1px solid;
+    list-style: none;
+    position: relative;
+    width: 100%;
+}
+
+#navbar a {
+    display: block;
+    padding: 10px 30px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+iframe {
+    width: 100%;
+    max-width: 560px;
+    display: block;
+    margin: 0 auto;
+}
+
+#p-img {
+    text-align: center;
+}
+
+:not(pre) > code[class*="language-"], :not(pre) > pre[class*="language-"] {
+    font-size: .7em;
+}
+
+@media only screen and (max-width: 815px) {
+    #navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+    
+    #navbar ul {
+        border: 1px solid;
+        margin: 0 auto;
+    }
+    
+    #main-doc {
+        position: relative;
+        margin-left: 0px;
+        margin-top: 300px;
+    }
+}
